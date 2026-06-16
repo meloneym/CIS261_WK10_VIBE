@@ -1,7 +1,4 @@
-#Meloney Mattison
-#CIS261
-#WK10 VIBE Coding
-
+# Removed author/course comments per request
 import os
 
 GRADE_FILE = "student_grades.txt"
@@ -185,10 +182,9 @@ def display_grade_distribution(students):
         g = s.get("grade", "F")
         counts[g] = counts.get(g, 0) + 1
 
-    # Format to match screenshot: simple header and indented lines
     print()
     print("Grade Distribution:")
-    # Only show grades with at least one student, ordered by count desc
+    sorted_grades = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
     sorted_grades = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
     for grade, cnt in sorted_grades:
         if cnt > 0:
@@ -203,24 +199,20 @@ def calculate_class_statistics(students):
     highest_avg = max(averages)
     lowest_avg = min(averages)
 
-    # Find students with highest and lowest averages
     highest_students = [student for student in students if student["average"] == highest_avg]
     lowest_students = [student for student in students if student["average"] == lowest_avg]
 
     print()
     delineate("CLASS STATISTICS")
 
-    # Display highest average with student names
     highest_names = ", ".join([student['name'] for student in highest_students])
     print(f"\nHighest average: {highest_avg:.2f} ({highest_names})")
 
-    # Display lowest average with student names
     lowest_names = ", ".join([student['name'] for student in lowest_students])
     print(f"Lowest average:  {lowest_avg:.2f} ({lowest_names})")
 
     print(f"\nClass average:   {sum(averages) / len(averages):.2f}")
 
-    # Show grade distribution
     display_grade_distribution(students)
 
 
