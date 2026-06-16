@@ -1,4 +1,7 @@
-# Removed author/course comments per request
+#Meloney Mattison
+#CIS261
+#WK10 VIBE Coding
+
 import os
 
 GRADE_FILE = "student_grades.txt"
